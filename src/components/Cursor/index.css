@@ -1,0 +1,22 @@
+.cursor-default {
+  display: block;
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 1111;
+  user-select: none;
+  transition: all 0.2s var(--bouncing-transition);
+  mix-blend-mode: difference;
+}
+
+/* tablet size */
+@media (max-width: 920px) {
+  .cursor-default {
+    @apply hidden;
+  }
+}

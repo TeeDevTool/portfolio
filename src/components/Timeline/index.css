@@ -1,0 +1,252 @@
+* {
+  --grey: #444;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @apply mb-10;
+}
+
+.timeline::before {
+  content: "";
+  width: 10px;
+  background-color: var(--grey);
+  border-radius: 5px;
+  top: 60px;
+  bottom: -43px;
+
+  @apply absolute;
+}
+
+.timeline.active::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  background-color: var(--grey);
+  border-radius: 5px;
+  top: 67px;
+  bottom: -43px;
+
+  @apply absolute;
+}
+
+.timeline:last-of-type::before {
+  @apply hidden;
+}
+
+.container {
+  padding: 0 50px;
+  position: relative;
+  background-color: inherit;
+  width: auto;
+
+  @apply relative w-auto flex;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background-color: var(--grey);
+  border: 5px solid var(--secondary);
+  top: 14px;
+  left: -13px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.active :is(.container)::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: var(--background);
+  border: 7px solid var(--secondary);
+  top: 7px;
+  left: -20px;
+  border-radius: 50%;
+  z-index: 1;
+  animation: heart-beat 4s ease-in-out infinite alternate;
+}
+
+.active :is(.time-pc) {
+  font-size: var(--step-1);
+  @apply pt-4;
+}
+
+.content {
+  background-color: transparent;
+}
+
+.content > div {
+  @apply flex items-center;
+}
+
+.skill-set {
+  flex-wrap: wrap;
+
+  @apply px-4;
+}
+
+.skill-set > h5 {
+  @apply mr-3 mb-3;
+}
+
+.time-pc {
+  width: 30%;
+  font-size: var(--step-0);
+
+  @apply block pt-5;
+}
+
+.time-tablet,
+.time-mobile {
+  display: none;
+}
+
+.timeline :is(ul) {
+  @apply block pl-4 pr-0 pt-4 mb-5;
+}
+
+.timeline :is(ul > li) {
+  @apply flex mt-3;
+}
+
+.timeline :is(ul > li > div) {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--background);
+
+  @apply mr-4;
+}
+
+.timeline :is(ul > li > p) {
+  width: 100%;
+  text-shadow: none;
+
+  @apply text-left;
+}
+
+.timeline :is(span:last-of-type) {
+  font-size: var(--step-1);
+
+  @apply ml-6;
+}
+
+@media screen and (max-width: 920px) {
+  .container {
+    position: relative;
+    background-color: inherit;
+    width: auto;
+
+    @apply pr-4 pl-28;
+  }
+
+  .container::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--grey);
+    border: 5px solid var(--secondary);
+    top: 17px;
+    left: -10px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .active :is(.container)::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background);
+    border: 5px solid var(--secondary);
+    top: 12px;
+    left: -15px;
+    border-radius: 50%;
+    z-index: 1;
+    animation: none;
+  }
+
+  .active :is(.time-tablet) {
+    font-size: calc(var(--step-0) + 3px);
+
+    @apply top-14;
+  }
+
+  .timeline::before {
+    top: 81px;
+    bottom: -47px;
+  }
+
+  .timeline.active::before {
+    top: 86px;
+    bottom: -47px;
+  }
+
+  .timeline :is(ul > li > div) {
+    width: 15px;
+    height: 15px;
+  }
+
+  .timeline :is(ul > li > p) {
+    width: 75%;
+  }
+
+  .timeline :is(span:last-of-type) {
+    font-size: var(--step-0);
+
+    @apply ml-3;
+  }
+
+  .time-tablet {
+    font-size: var(--step-0);
+    width: 25%;
+    left: -4.5rem;
+    top: 3.25rem;
+
+    @apply block absolute text-center;
+  }
+
+  .time-pc,
+  .time-mobile {
+    @apply hidden;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .timeline :is(span:last-of-type),
+  .container::after,
+  .active :is(.container)::after,
+  .timeline::before,
+  .timeline.active::before,
+  .time-pc,
+  .time-tablet {
+    @apply hidden;
+  }
+
+  .container {
+    @apply p-0;
+  }
+
+  .timeline {
+    border-bottom: var(--background) 1px solid;
+
+    @apply pb-8 mb-8;
+  }
+
+  .timeline:last-of-type {
+    border: none;
+    @apply pb-0 mb-0;
+  }
+
+  .time-mobile {
+    @apply block pl-4 mt-2;
+  }
+}

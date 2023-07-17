@@ -1,0 +1,78 @@
+.modal {
+  z-index: 1111;
+  color: var(--background);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+
+  @apply fixed top-0 left-0 w-full h-full;
+}
+
+.modal.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.modal-content {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+
+  @apply fixed flex justify-center items-center;
+}
+
+.modal-content > svg {
+  @apply absolute top-8 right-8 transition-transform;
+}
+
+.modal-content > svg:hover {
+  transform: scale(1.2);
+}
+
+.modal-content > svg:active {
+  transform: scale(0.8);
+}
+
+.modal-body {
+  max-width: 60vw;
+}
+
+.modal-body p {
+  text-shadow: none;
+
+  @apply mt-4;
+}
+
+.modal-body p a {
+  text-shadow: var(--bold);
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.modal-body p a:hover {
+  color: var(--secondary);
+}
+
+.modal-body a {
+  @apply mt-6;
+}
+
+.modal-body :is(ul) {
+  list-style-type: disclosure-closed;
+  list-style-position: outside;
+
+  @apply block w-full p-0 pl-4 mt-4;
+}
+
+.modal-body > .stacks {
+  flex-wrap: wrap;
+  gap: 4px 6px;
+
+  @apply flex mt-4;
+}
