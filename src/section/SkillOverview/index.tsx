@@ -7,6 +7,7 @@ interface CountingBadgeProps {
   title: string;
   description1?: string;
   description2?: string;
+  classes?: string;
 }
 
 const CountingBadge: React.FC<CountingBadgeProps> = ({
@@ -14,9 +15,10 @@ const CountingBadge: React.FC<CountingBadgeProps> = ({
   title,
   description1,
   description2,
+  classes,
 }) => {
   return (
-    <div className="counting-badge">
+    <div className={`counting-badge ${classes}`}>
       <h1>{count}</h1>
       <h3>{title}</h3>
       <h6>{description1}</h6>
@@ -93,11 +95,13 @@ const SkillOverwiew: React.FC<SkillOverwiewProps> = () => {
     <section className="overview">
       <div ref={pointerRef}>
         <CountingBadgeMemo
+          classes="left"
           count={4}
           title="Years of Experience"
           description1="Only the time can increase this number"
         />
         <CountingBadgeMemo
+          classes="right"
           count={26}
           title="Stacks"
           description1="Wanna increase this number?"

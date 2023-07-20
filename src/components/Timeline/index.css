@@ -17,6 +17,8 @@
   border-radius: 5px;
   top: 60px;
   bottom: -43px;
+  opacity: 0;
+  transition: all ease-in-out 1s;
 
   @apply absolute;
 }
@@ -29,8 +31,15 @@
   border-radius: 5px;
   top: 67px;
   bottom: -43px;
+  opacity: 0;
+  transition: all ease-in-out 1s;
 
   @apply absolute;
+}
+
+.timeline:has(div.container.show)::before,
+.timeline.active:has(div.container.show)::before {
+  opacity: 1;
 }
 
 .timeline:last-of-type::before {

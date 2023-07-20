@@ -240,6 +240,27 @@ section > * {
   position: relative;
 }
 
+section > *:nth-child(2n + 1),
+.right {
+  opacity: 0;
+  transition: all ease-out 0.8s;
+
+  transform: translateX(100px);
+}
+
+section > *:nth-child(2n),
+.left {
+  opacity: 0;
+  transition: all ease-out 0.8s;
+
+  transform: translateX(-100px);
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
 section > div:first-of-type {
   margin-bottom: max(35px, 5.5vh);
 }
@@ -269,6 +290,8 @@ section:nth-of-type(3) {
 
 section:nth-of-type(3) > div {
   z-index: 1;
+  opacity: 1;
+  transform: translateX(0);
   background-color: var(--background);
   padding: var(--padding-y) 0;
   mask: radial-gradient(

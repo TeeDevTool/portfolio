@@ -31,6 +31,43 @@ export default function Home() {
     };
   }, [mainRef.current]);
 
+  useEffect(() => {
+    function getAllElement(): Element[] {
+      const elementList: Element[] = [];
+      const sections: NodeListOf<HTMLElement> = document.querySelectorAll("section");
+      const lefts: NodeListOf<HTMLElement> = document.querySelectorAll(".left");
+      const rights: NodeListOf<HTMLElement> = document.querySelectorAll(".right");
+      const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".card");
+
+      sections.forEach((section) => {
+        section.querySelectorAll(":scope > *").forEach((el) => elementList.push(el));
+      });
+
+      lefts.forEach((el) => elementList.push(el));
+
+      rights.forEach((el) => elementList.push(el));
+
+      cards.forEach((el) => elementList.push(el));
+
+      return elementList;
+    }
+
+    const allEl = getAllElement();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+        if (entry.isIntersecting) observer.unobserve(entry.target);
+      });
+    }, {});
+
+    allEl.forEach((el) => observer.observe(el));
+
+    return () => {
+      allEl.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <main ref={mainRef}>
       <Navbar onNavigate={onNavigate} />

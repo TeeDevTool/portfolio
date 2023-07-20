@@ -27,7 +27,7 @@ const Timeline: React.FC<TimelineProps> = ({ datas }) => {
           <div className="time-tablet">
             <div>{`${data.startYear} - ${data.endYear ?? DEFAULT_END_DATE}`}</div>
           </div>
-          <div className="container">
+          <div className="container left">
             <div className="time-pc">
               <div>{`${data.startYear} - ${data.endYear ?? DEFAULT_END_DATE}`}</div>
             </div>
