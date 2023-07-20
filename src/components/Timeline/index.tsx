@@ -22,8 +22,8 @@ interface TimelineProps {
 const Timeline: React.FC<TimelineProps> = ({ datas }) => {
   return (
     <div className="timeline-list w-full">
-      {datas.map((data) => (
-        <div className={`timeline ${data.active ? "active" : ""}`}>
+      {datas.map((data, i) => (
+        <div key={`timeline-${i}`} className={`timeline ${data.active ? "active" : ""}`}>
           <div className="time-tablet">
             <div>{`${data.startYear} - ${data.endYear ?? DEFAULT_END_DATE}`}</div>
           </div>
@@ -42,16 +42,16 @@ const Timeline: React.FC<TimelineProps> = ({ datas }) => {
                 {`At ${data.workplace} | ${data.startYear} - ${data.endYear ?? DEFAULT_END_DATE}`}
               </span>
               <ul>
-                {data.descriptions.map((description) => (
-                  <li>
+                {data.descriptions.map((description, index) => (
+                  <li key={`description-${index}`}>
                     <div />
                     <p>{description}</p>
                   </li>
                 ))}
               </ul>
               <div className="skill-set">
-                {data.stacks.map((stack) => (
-                  <Badge>{stack}</Badge>
+                {data.stacks.map((stack, index) => (
+                  <Badge key={`skill-badge-${index}`}>{stack}</Badge>
                 ))}
               </div>
             </div>

@@ -67,8 +67,8 @@ const Modal: React.FC<ModalProps> = ({
         <div className="modal-body">
           <h3>{title}</h3>
           <div className="stacks">
-            {stacks?.map((stack) => (
-              <Badge>{stack}</Badge>
+            {stacks?.map((stack, i) => (
+              <Badge key={`modal-skill-badge-${i}`}>{stack}</Badge>
             ))}
           </div>
           <p>{content}</p>
