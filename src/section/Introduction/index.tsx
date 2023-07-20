@@ -4,22 +4,26 @@ import NavigationMenus from "@app/components/Menus";
 import { PersonalInformation } from "@app/common/enum";
 import { toUpperCase } from "@app/utils/string.uitl";
 import { isLaptopOrPC } from "@app/utils/general.util";
+import { NavigateType } from "@app/hooks/useNavigate";
 
-interface IntroductionProps {}
+interface IntroductionProps {
+  reference: React.MutableRefObject<HTMLElement | null>;
+  onNavigate: (section: NavigateType) => void;
+}
 
 const MY_IMAGE = "/images/profile.jpg";
 const IMAGE_ALT = "Tee's profile";
 
-const Introduction: React.FC<IntroductionProps> = () => {
+const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) => {
   const isPCSize = isLaptopOrPC();
 
   const renderMenus = useCallback(() => {
     if (!isPCSize) return null;
-    return <NavigationMenus />;
-  }, [isPCSize]);
+    return <NavigationMenus onNavigate={onNavigate} />;
+  }, [isPCSize, onNavigate]);
 
   return (
-    <section>
+    <section ref={reference}>
       <div>
         <h2 className="hoverableX1 w-fit">Hi! I'm Tee,</h2>
         <h2 className="hoverableX1  w-fit">

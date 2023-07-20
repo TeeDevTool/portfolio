@@ -78,6 +78,7 @@ export enum Menu {
   Skills = "skills",
   Experience = "experience",
   Projects = "projects",
+  Introduction = "introduction",
 }
 
 export enum Project {

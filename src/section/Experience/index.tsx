@@ -3,7 +3,9 @@ import Header, { HeaderBG } from "@app/components/Header";
 import Timeline from "@app/components/Timeline";
 import { Skills } from "@app/common/enum";
 
-interface ExperienceProps {}
+interface ExperienceProps {
+  reference: React.MutableRefObject<HTMLElement | null>;
+}
 
 const experience = [
   {
@@ -69,9 +71,9 @@ const experience = [
   },
 ];
 
-const Experience: React.FC<ExperienceProps> = () => {
+const Experience: React.FC<ExperienceProps> = ({ reference }) => {
   return (
-    <section className="h-auto">
+    <section ref={reference} className="h-auto">
       <Header bold bg={HeaderBG.Dark}>
         Experience
       </Header>

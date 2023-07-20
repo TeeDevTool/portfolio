@@ -179,9 +179,15 @@ h1 {
 
 nav {
   z-index: 111;
-  /* background: linear-gradient(180deg, rgba(255,255,255,0.8674063375350141) 2%, rgba(255,255,255,0.03267244397759106) 96%); */
+  transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1) all;
 
   @apply w-screen flex justify-between fixed p-8 bg-transparent;
+}
+
+nav.scrolled {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  padding: 0.75rem 2rem;
+  background-color: #ffffffcc;
 }
 
 ul {
@@ -517,11 +523,11 @@ tr :is(th:last-of-type) {
   @apply w-full;
 }
 
-.grid {
+.project-grid {
   grid-template-columns: auto auto auto;
   row-gap: 3rem;
 
-  @apply justify-evenly;
+  @apply grid justify-evenly;
 }
 
 /* nav button component */
@@ -602,6 +608,16 @@ tr :is(th:last-of-type) {
   pointer-events: none;
 }
 
+.logo:active,
+a:active > svg,
+li:active :is(a) {
+  transform: scale(0.8);
+}
+
+ul:has(.nav-menu) {
+  @apply hidden;
+}
+
 /* tablet size */
 @media screen and (max-width: 920px) {
   main :is(section:first-of-type) {
@@ -651,7 +667,7 @@ tr :is(th:last-of-type) {
     width: 40%;
   }
 
-  .grid {
+  .project-grid {
     grid-template-columns: auto auto;
     row-gap: 2rem;
   }
@@ -670,6 +686,18 @@ tr :is(th:last-of-type) {
 
   .nav-button.disabled {
     width: 15rem;
+  }
+
+  ul:has(.nav-menu) {
+    grid-template-columns: auto auto auto !important;
+    justify-content: left !important;
+    gap: 2rem !important;
+
+    @apply grid w-fit;
+  }
+
+  ul.menu-bar:has(a) {
+    @apply hidden;
   }
 }
 
@@ -741,7 +769,7 @@ tr :is(th:last-of-type) {
     @apply hidden;
   }
 
-  .grid {
+  .project-grid {
     grid-template-columns: auto;
 
     @apply justify-center;
@@ -749,6 +777,10 @@ tr :is(th:last-of-type) {
 
   .nav-button.disabled {
     width: 14rem;
+  }
+
+  ul:has(.nav-menu) {
+    @apply hidden;
   }
 }
 

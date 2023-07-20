@@ -1,20 +1,20 @@
+import { NavigateType } from "@app/hooks/useNavigate";
 import { Menu } from "@app/common/enum";
 import React, { memo, useMemo } from "react";
 
 interface NavigationMenusProps {
-  horizontal?: boolean;
+  onNavigate: (section: NavigateType) => void;
+  navable?: boolean;
 }
 
-const NavigationMenus: React.FC<NavigationMenusProps> = ({ horizontal }) => {
+const NavigationMenus: React.FC<NavigationMenusProps> = ({ onNavigate, navable }) => {
   const menus = useMemo(() => [Menu.Skills, Menu.Experience, Menu.Projects], []);
 
   return (
-    <ul>
+    <ul className="menu-bar">
       {menus.map((menu) => (
-        <li key={`menu-${menu}`}>
-          <a className="clickable" href="#">
-            {menu}
-          </a>
+        <li onClick={() => onNavigate(menu)} key={`menu-${menu}`}>
+          {navable ? <div className="nav-menu">{menu}</div> : <a className="clickable">{menu}</a>}
         </li>
       ))}
     </ul>

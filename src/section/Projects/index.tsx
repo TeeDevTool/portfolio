@@ -4,7 +4,9 @@ import Header, { HeaderBG } from "@app/components/Header";
 import Modal, { ModalProps } from "@app/components/Modal";
 import { PersonalInformation, Project, Skills } from "@app/common/enum";
 
-interface ProjectsProps {}
+interface ProjectsProps {
+  reference: React.MutableRefObject<HTMLElement | null>;
+}
 
 const DEFAULT_PROJECT = {
   title: null,
@@ -82,7 +84,7 @@ const projectDetails: { [key: string]: Omit<ModalProps, "onClose"> } = {
   },
 };
 
-const Projects: React.FC<ProjectsProps> = () => {
+const Projects: React.FC<ProjectsProps> = ({ reference }) => {
   const [project, setProject] = useState<Omit<ModalProps, "onClose">>(DEFAULT_PROJECT);
 
   const setCurrentProject = useCallback(
@@ -103,11 +105,11 @@ const Projects: React.FC<ProjectsProps> = () => {
   const handleClear = useCallback(() => setProject(DEFAULT_PROJECT), []);
 
   return (
-    <section className="h-fit">
+    <section ref={reference} className="h-fit">
       <Header bold bg={HeaderBG.Grey}>
         Project
       </Header>
-      <div className="grid mt-12">{renderProjects()}</div>
+      <div className="project-grid mt-12">{renderProjects()}</div>
       <Modal {...project} onClose={handleClear} />
     </section>
   );

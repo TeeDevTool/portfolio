@@ -3,7 +3,9 @@ import Header, { HeaderBG } from "@app/components/Header";
 import Table, { CellType, TableRow } from "@app/components/Table";
 import { Proficiency, Skills as S } from "@app/common/enum";
 
-interface SkillsProps {}
+interface SkillsProps {
+  reference: React.MutableRefObject<HTMLElement | null>;
+}
 
 interface TableWrapperProps {
   title: string;
@@ -114,7 +116,7 @@ const TableWrapper: React.FC<TableWrapperProps> = ({ title, datas }) => {
 
 const TableWrapperMemo = memo(TableWrapper);
 
-const Skills: React.FC<SkillsProps> = () => {
+const Skills: React.FC<SkillsProps> = ({ reference }) => {
   const tables = useMemo(
     () => [
       { title: S.Frontend, datas: frontends },
@@ -133,7 +135,7 @@ const Skills: React.FC<SkillsProps> = () => {
   );
 
   return (
-    <section className="h-fit">
+    <section ref={reference} className="h-fit">
       <Header bold bg={HeaderBG.Dark}>
         skills
       </Header>
