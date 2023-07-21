@@ -19,7 +19,6 @@ const Cursor: React.FC<CursorProps> = () => {
   const clickableRef = useRef<Element | null>(null);
   const contactRef = useRef<Element | null>(null);
   const logoRef = useRef<Element | null>(null);
-  const overviewRef = useRef<Element | null>(null);
 
   useEffect(() => {
     function updateProperties(el: HTMLDivElement, state: StateInterface) {

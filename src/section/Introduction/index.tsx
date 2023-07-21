@@ -11,6 +11,7 @@ interface IntroductionProps {
 }
 
 const MY_IMAGE = "/images/profile.jpg";
+const MY_IMAGE_BRUSH = "/images/profile-colorful.jpg";
 const IMAGE_ALT = "Tee's profile";
 
 const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) => {
@@ -84,6 +85,41 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
     };
   }, []);
 
+  useEffect(() => {
+    let mouseTimer: null | NodeJS.Timeout = null;
+
+    function handleImageOpacity(e: MouseEvent) {
+      if (reference.current)
+        reference.current.style.setProperty(
+          "--opacity-x",
+          `${Math.min(
+            0.7,
+            Math.max(
+              Math.abs(
+                (e.pageY - reference.current.clientHeight / 2) /
+                  (reference.current.clientHeight / 2)
+              ),
+              Math.abs(
+                (e.pageX - reference.current.clientWidth / 2) / (reference.current.clientWidth / 2)
+              )
+            )
+          )}`
+        );
+    }
+
+    function handleMouseMove(e: MouseEvent) {
+      if (mouseTimer) clearTimeout(mouseTimer);
+
+      mouseTimer = setTimeout(() => handleImageOpacity(e), 100);
+    }
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [reference.current]);
+
   return (
     <section ref={reference}>
       <div>
@@ -109,7 +145,13 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
         I have target to relocating to new country and contributing my skills to exciting projects
         elsewhere.
       </p>
-      <Image src={MY_IMAGE} alt={IMAGE_ALT} className="hoverableX2" width={584} height={631} />
+      <div className="hero-image hoverableX2">
+        <div className="hero-image-wrapper">
+          <Image src={MY_IMAGE_BRUSH} alt={IMAGE_ALT} width={584} height={631} />
+          {/* <Image src={MY_IMAGE_FULL} alt={IMAGE_ALT} width={584} height={631} /> */}
+          <Image src={MY_IMAGE} alt={IMAGE_ALT} width={584} height={631} />
+        </div>
+      </div>
       {renderMenus()}
     </section>
   );

@@ -40,7 +40,9 @@ export default function Home() {
       const cards: NodeListOf<HTMLElement> = document.querySelectorAll(".card");
 
       sections.forEach((section) => {
-        section.querySelectorAll(":scope > *").forEach((el) => elementList.push(el));
+        section.querySelectorAll(":scope > *").forEach((el) => {
+          if (!el.classList.contains("modal")) elementList.push(el);
+        });
       });
 
       lefts.forEach((el) => elementList.push(el));
