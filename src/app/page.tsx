@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Cursor from "@app/components/Cursor";
 import Navbar from "@app/components/Navbar";
 import Introduction from "@app/section/Introduction";
@@ -12,6 +12,7 @@ import { isLaptopOrPC } from "@app/utils/general.util";
 
 export default function Home() {
   const { onNavigate, introductionRef, skillsRef, experienceRef, projectsRef } = useNavigate();
+  const [isPCSize, setPCSize] = useState<boolean>(false);
   const mainRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -68,6 +69,10 @@ export default function Home() {
     return () => {
       allEl.forEach((el) => observer.unobserve(el));
     };
+  }, [isPCSize]);
+
+  useEffect(() => {
+    setPCSize(isLaptopOrPC());
   }, []);
 
   return (
@@ -78,7 +83,7 @@ export default function Home() {
       <SkillOverwiew />
       <Experience reference={experienceRef} />
       <Projects reference={projectsRef} />
-      {isLaptopOrPC() && <Cursor />}
+      {isPCSize && <Cursor />}
     </main>
   );
 }
