@@ -1,9 +1,9 @@
-import React, { useCallback, memo, useEffect } from "react";
+import React, { useCallback, memo, useEffect, useState } from "react";
 import Image from "next/image";
 import NavigationMenus from "@app/components/Menus";
 import { toUpperCase } from "@app/utils/string.uitl";
-import { isLaptopOrPC } from "@app/utils/general.util";
 import { NavigateType } from "@app/hooks/useNavigate";
+import { isLaptopOrPC } from "@app/utils/general.util";
 
 interface IntroductionProps {
   reference: React.MutableRefObject<HTMLElement | null>;
@@ -15,9 +15,10 @@ const MY_IMAGE_BRUSH = "/images/profile-colorful.jpg";
 const IMAGE_ALT = "Tee's profile";
 
 const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) => {
-  const isPCSize = isLaptopOrPC();
+  const [isPCSize, setPCSize] = useState<boolean>(false);
 
   const renderMenus = useCallback(() => {
+    console.log(isPCSize);
     if (!isPCSize) return null;
     return <NavigationMenus onNavigate={onNavigate} />;
   }, [isPCSize, onNavigate]);
@@ -120,10 +121,14 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
     };
   }, [reference.current]);
 
+  useEffect(() => {
+    setPCSize(isLaptopOrPC());
+  }, []);
+
   return (
     <section ref={reference}>
       <div>
-        <h2 className="hoverableX1 w-fit">Hi! I'm Tee,</h2>
+        <h2 className="hoverableX1 w-fit">Hi! I&apos;m Tee,</h2>
         <h2 className="hoverableX1  w-fit">
           <span className="mr-3">A</span>
           <span className="word font-secondary font-bold">
