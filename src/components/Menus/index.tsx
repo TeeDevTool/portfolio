@@ -14,7 +14,13 @@ const NavigationMenus: React.FC<NavigationMenusProps> = ({ onNavigate, navable }
     <ul className="menu-bar">
       {menus.map((menu) => (
         <li onClick={() => onNavigate(menu)} key={`menu-${menu}`}>
-          {navable ? <div className="nav-menu">{menu}</div> : <a className="clickable">{menu}</a>}
+          {navable ? (
+            <div className="nav-menu">{menu}</div>
+          ) : (
+            <a data-content={menu} className="clickable">
+              {menu}
+            </a>
+          )}
         </li>
       ))}
     </ul>

@@ -12,7 +12,7 @@ interface StateInterface {
   scale: string | null;
 }
 
-const CURSOR_SIZE = 20;
+const CURSOR_SIZE = 240;
 
 const Cursor: React.FC<CursorProps> = () => {
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -81,19 +81,19 @@ const Cursor: React.FC<CursorProps> = () => {
     }
 
     function onMouseHoverX1() {
-      if (cursorRef.current) cursorRef.current.style.transform = "scale(6)";
+      if (cursorRef.current) cursorRef.current.style.transform = "scale(0.5)";
     }
 
     function onMouseHoverOutX1() {
-      if (cursorRef.current) cursorRef.current.style.transform = "scale(1)";
+      if (cursorRef.current) cursorRef.current.style.transform = "scale(0.083)";
     }
 
     function onMouseHoverX2() {
-      if (cursorRef.current) cursorRef.current.style.transform = "scale(12)";
+      if (cursorRef.current) cursorRef.current.style.transform = "scale(1)";
     }
 
     function onMouseHoverOutX2() {
-      if (cursorRef.current) cursorRef.current.style.transform = "scale(1)";
+      if (cursorRef.current) cursorRef.current.style.transform = "scale(0.083)";
     }
 
     function onMouseHoverOverview() {
@@ -101,19 +101,27 @@ const Cursor: React.FC<CursorProps> = () => {
     }
 
     function onMouseHoverOutOverview() {
-      if (cursorRef.current) cursorRef.current.style.transform = "scale(1)";
+      if (cursorRef.current) cursorRef.current.style.transform = "scale(0.083)";
     }
 
     function setNavElement(el: Element | null) {
       clickableRef.current = el;
+      transformScaleToObject(el);
     }
 
     function setContactElement(el: Element | null) {
       contactRef.current = el;
+      transformScaleToObject(el);
     }
 
     function setLogoElement(el: Element | null) {
       logoRef.current = el;
+      transformScaleToObject(el);
+    }
+
+    function transformScaleToObject(el: Element | null) {
+      let scale = !el ? "0.083" : "1";
+      if (cursorRef.current) cursorRef.current.style.transform = `scale(${scale})`;
     }
 
     if (document) {
@@ -203,7 +211,9 @@ const Cursor: React.FC<CursorProps> = () => {
     };
   }, [cursorRef.current]);
 
-  return <div ref={cursorRef} className="cursor-default"></div>;
+  return (
+    <div ref={cursorRef} className="cursor-default" style={{ transform: "scale(0.083)" }}></div>
+  );
 };
 
 export default Cursor;

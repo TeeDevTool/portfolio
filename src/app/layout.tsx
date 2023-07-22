@@ -1,4 +1,5 @@
 import { Julius_Sans_One, Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ const PoppinsFont = Poppins({
 });
 
 export const metadata = {
-  title: "Tee's Portfolio",
+  title: "Thanakorn's Portfolio",
   description: "For collect my work journeys",
 };
 
@@ -22,7 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <link rel="icon" href="/icons/favicon.png" sizes="any" />
-      <body className={clsx(JuliusSansOneFont.className, PoppinsFont.variable)}>{children}</body>
+      <body className={clsx(JuliusSansOneFont.className, PoppinsFont.variable)}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

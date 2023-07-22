@@ -18,7 +18,6 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
   const [isPCSize, setPCSize] = useState<boolean>(false);
 
   const renderMenus = useCallback(() => {
-    console.log(isPCSize);
     if (!isPCSize) return null;
     return <NavigationMenus onNavigate={onNavigate} />;
   }, [isPCSize, onNavigate]);
@@ -94,7 +93,7 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
         reference.current.style.setProperty(
           "--opacity-x",
           `${Math.min(
-            0.7,
+            1,
             Math.max(
               Math.abs(
                 (e.pageY - reference.current.clientHeight / 2) /
@@ -128,7 +127,7 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
   return (
     <section ref={reference}>
       <div>
-        <h2 className="hoverableX1 w-fit">Hi! I&apos;m Tee,</h2>
+        <h2 className="hoverableX1 w-fit">Hi! I&apos;m Thanakorn (Tee),</h2>
         <h2 className="hoverableX1  w-fit">
           <span className="mr-3">A</span>
           <span className="word font-secondary font-bold">
@@ -152,9 +151,8 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
       </p>
       <div className="hero-image hoverableX2">
         <div className="hero-image-wrapper">
-          <Image src={MY_IMAGE_BRUSH} alt={IMAGE_ALT} width={584} height={631} />
-          {/* <Image src={MY_IMAGE_FULL} alt={IMAGE_ALT} width={584} height={631} /> */}
           <Image src={MY_IMAGE} alt={IMAGE_ALT} width={584} height={631} />
+          <Image src={MY_IMAGE_BRUSH} alt={IMAGE_ALT} width={584} height={631} />
         </div>
       </div>
       {renderMenus()}
