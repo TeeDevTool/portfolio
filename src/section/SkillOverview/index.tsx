@@ -98,7 +98,7 @@ const SkillOverwiew: React.FC<SkillOverwiewProps> = () => {
           classes="left"
           count={4}
           title="Years of Experience"
-          description1="Only the time can increase this number"
+          description1="Only time can increase this number"
         />
         <CountingBadgeMemo
           classes="right"

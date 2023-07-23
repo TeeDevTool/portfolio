@@ -183,7 +183,7 @@ nav {
   z-index: 111;
   transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1) all;
 
-  @apply w-screen flex justify-between fixed p-8 bg-transparent;
+  @apply w-screen flex justify-between items-center fixed p-8 bg-transparent;
 }
 
 nav.scrolled {
@@ -416,7 +416,6 @@ a:hover > svg {
 }
 
 nav :is(img:first-of-type) {
-  background-color: #ffffff2e;
   border-radius: 0.5rem;
   transition: 0.2s ease-out;
   @apply p-2;
