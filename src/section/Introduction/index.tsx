@@ -11,7 +11,7 @@ interface IntroductionProps {
 }
 
 const MY_IMAGE = "/images/profile.jpg";
-const MY_IMAGE_BRUSH = "/images/profile-colorful.jpg";
+const MY_IMAGE_BRUSH = "/images/profile-colorwater.jpg";
 const IMAGE_ALT = "Tee's profile";
 
 const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) => {
@@ -151,8 +151,8 @@ const Introduction: React.FC<IntroductionProps> = ({ reference, onNavigate }) =>
       </p>
       <div className="hero-image hoverableX2">
         <div className="hero-image-wrapper">
-          <Image src={MY_IMAGE} alt={IMAGE_ALT} width={584} height={631} />
           <Image src={MY_IMAGE_BRUSH} alt={IMAGE_ALT} width={584} height={631} />
+          <Image src={MY_IMAGE} alt={IMAGE_ALT} width={584} height={631} />
         </div>
       </div>
       {renderMenus()}
