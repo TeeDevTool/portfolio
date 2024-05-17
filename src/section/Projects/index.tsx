@@ -32,6 +32,12 @@ const projects = [
     cover: "workspace",
     workplace: PersonalInformation.Refinitiv,
   },
+  {
+    title: Project.Nexter,
+    description: Project.Developer,
+    cover: "nexter",
+    workplace: PersonalInformation.SevenPeaks,
+  },
 ];
 
 const projectDetails: { [key: string]: Omit<ModalProps, "onClose"> } = {
@@ -80,6 +86,27 @@ const projectDetails: { [key: string]: Omit<ModalProps, "onClose"> } = {
       Skills.CSS,
       Skills.Jest,
       Skills.Jenkins,
+    ],
+  },
+  [Project.Nexter]: {
+    title: Project.Nexter,
+    workplace: PersonalInformation.SevenPeaks,
+    workplaceURL: "https://sevenpeakssoftware.com/th/",
+    position: "Senior frontend developer",
+    content:
+      "Nexter project or One dooDeco is backoffice project that created for solve pain point of client which is reduce human error, add more automatic process with the design that very simple but also challenging",
+    stacks: [
+      Skills.Typescript,
+      Skills.React,
+      Skills.NextJS,
+      Skills.Tailwind,
+      Skills.ReactHookForm,
+      Skills.ReactQuery,
+      Skills.Zod,
+      Skills.Nodejs,
+      Skills.TRPC,
+      Skills.PostgreSQL,
+      Skills.Prisma,
     ],
   },
 };

@@ -39,7 +39,7 @@ const frontends = [
   [
     { value: S.Typescript, type: CellType.Cell },
     { value: Proficiency.Advance, type: CellType.Cell },
-    { value: "", type: CellType.Cell },
+    { value: S.Zod, type: CellType.Cell },
   ],
 ];
 
@@ -48,7 +48,7 @@ const backends = [
   [
     { value: S.Nodejs, type: CellType.Cell },
     { value: Proficiency.Advance, type: CellType.Cell },
-    { value: S.GraphQL, type: CellType.Cell },
+    { value: `${S.GraphQL} | ${S.TRPC}`, type: CellType.Cell },
   ],
   [
     { value: S.PHP, type: CellType.Cell },
@@ -82,7 +82,7 @@ const others = [
   [
     { value: S.SQL, type: CellType.Cell },
     { value: Proficiency.Intermediate, type: CellType.Cell },
-    { value: `${S.MySQL} | ${S.PostgreSQL}`, type: CellType.Cell },
+    { value: `${S.MySQL} | ${S.PostgreSQL} | ${S.Prisma}`, type: CellType.Cell },
   ],
   [
     { value: S.NoSQL, type: CellType.Cell },

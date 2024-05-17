@@ -102,7 +102,7 @@ const SkillOverwiew: React.FC<SkillOverwiewProps> = () => {
         />
         <CountingBadgeMemo
           classes="right"
-          count={26}
+          count={29}
           title="Stacks"
           description1="Wanna increase this number?"
           description2="Mail me, the interesting stack!"

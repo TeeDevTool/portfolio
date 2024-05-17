@@ -17,6 +17,7 @@ export enum PersonalInformation {
   Refinitiv = "Refinitiv",
   Klickerlab = "Klickerlab",
   Head2toes = "Head2Toes",
+  SevenPeaks = "Seven Peaks Software",
 }
 
 export enum Skills {
@@ -40,6 +41,8 @@ export enum Skills {
   Angular = "Angular",
   Python = "Python",
   Nodejs = "Node.js",
+  TRPC = "TRPC",
+  Prisma = "Prisma",
   GraphQL = "GraphQL",
   PHP = "PHP",
   Laravel = "Laravel",
@@ -57,6 +60,7 @@ export enum Skills {
   R = "R",
   SQL = "SQL",
   NoSQL = "NoSQL",
+  Zod = "Zod",
 }
 
 export enum Proficiency {
@@ -87,4 +91,5 @@ export enum Project {
   ThaiWaterPlan = "Thai Water Plan",
   Smartfinn = "Smartfinn",
   Workspace = "Workspace",
+  Nexter = "Nexter",
 }
