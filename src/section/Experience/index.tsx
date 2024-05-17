@@ -9,14 +9,40 @@ interface ExperienceProps {
 
 const experience = [
   {
+    job: "Sr. Frontend Developer",
+    workplace: "Seven Peaks",
+    startYear: 2023,
+    active: true,
+    descriptions: [
+      "Develop and maintain responsive web applications using Next.js and Typescript",
+      "Using react related 3rd library integrate with web applications to enhance maintainability and ensure consistency with industry standards such as React- hook-form, React-query",
+      "Applying modern CSS frameworks to web application such as Material UI and TailwindCSS",
+      "Write clean, modular, and reusable code following best practices and coding standards",
+      "Optimize web applications for maximum speed and scalability",
+    ],
+    stacks: [
+      Skills.React,
+      Skills.NextJS,
+      Skills.ReactHookForm,
+      Skills.ReactQuery,
+      Skills.Typescript,
+      Skills.CSS,
+      Skills.Tailwind,
+      Skills.MUI,
+      Skills.Nodejs,
+      Skills.PostgreSQL,
+      Skills.Prisma,
+      Skills.TRPC,
+      Skills.Zod,
+    ],
+  },
+  {
     job: "Frontend Developer",
     workplace: "Refinitiv",
     startYear: 2022,
-    active: true,
+    endYear: 2023,
     descriptions: [
       "Develop and maintain responsive web applications using ReactJS and Typescript",
-      "Write clean, modular, and reusable code following best practices and coding standards",
-      "Optimize web applications for maximum speed and scalability",
       "Review colleagues code to verify the correctness of logic and check for typos and also Providing consultation and solutions to colleagues for resolving problems",
       "Design and implement unit tests to validate functionality, performance, and reliability of software systems",
       "Create comprehensive documentation and deliver presentations to showcase latest developed features in each sprint",
